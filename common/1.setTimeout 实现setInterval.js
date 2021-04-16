@@ -13,5 +13,7 @@ const interval = (cb, ms) => {
 
 // 使用
 const interval1 = interval(() => console.log('hi'), 2000)
+const interval2 = interval(() => console.log('hi2'), 2000)
 //10s后 清除
 setTimeout(() => interval1.clear(), 10000)
+setTimeout(() => interval2.clear(), 20000)
