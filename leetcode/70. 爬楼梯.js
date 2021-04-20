@@ -3,6 +3,7 @@
  * @return {number}
  */
 
+// 方法一：滚动数组 动态规划
 // f(n-2) + f(n-1) = f(n)
 // q + p = r
 var climbStairs = function (n) {
@@ -17,5 +18,6 @@ var climbStairs = function (n) {
     return r
 };
 
+// 方法二： 递归 尾递归 TODO
 
 console.log(climbStairs(4))
