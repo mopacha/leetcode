@@ -11,10 +11,29 @@ function ListNode(val, next) {
 }
 
 var addTwoNumbers = function (l1, l2) {
-    let first = l1.join('')
-    let second = l2.join('')
-    let sum = parseInt(first) + parseInt(second)
-    return sum.toString().split('').reverse().map(i => parseInt(i))
+    let sum = new ListNode('0')
+    let head = sum
+    let curry = 0
+
+    while (l1 || l2 || curry) {
+        let val1 = l1 !== null ? l1.val : 0;
+        let val2 = l2 !== null ? l2.val : 0;
+        let sumVal = val1 + val2 + curry
+
+        curry = sumVal >= 10 ? 1 : 0
+        sum.next = new ListNode(sumVal % 10)
+
+        sum = sum.next
+        if (l1 !== null) {
+            l1 = l1.next
+        }
+
+        if (l2 !== null) {
+            l2 = l2.next
+        }
+    }
+
+    return head.next
 }
 
 
