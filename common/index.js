@@ -10,3 +10,14 @@
 */
 
 // https://www.jb51.net/article/102027.htm
+
+
+var value = 0
+Object.defineProperty(window,'a',{
+    get(){
+        return value+=1;
+    }
+})
+if(a===1&&a===2&&a===3){
+    console.log('success')
+}
