@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打印DOM</title>
+</head>
+
+<body>
+
+    <div id="root">
+        <ul>
+            <li>
+                <a href="">
+                    <img src="" alt="">
+                </a>
+            </li>
+            <li>
+                <span></span>
+            </li>
+            <li>
+            </li>
+        </ul>
+        <p></p>
+        <button></button>
+    </div>
+
+    <script>
+        // 深度优先递归
+        function deepFirstSearch(node, nodeList = []) {
+            if (node) {
+                nodeList.push(node)
+                const children = node.children
+                for (let i = 0; i < children.length; i++) {
+                    deepFirstSearch(children[i], nodeList)
+                }
+            }
+            return nodeList
+        }
+        // 使用栈 
+        function deepFirstSearch2(node) {
+            let stack = []
+            let nodes = []
+            stack.push(node)
+            nodes.push(nodes)
+            while (stack.length) {
+                let item = stack.pop()
+                nodes.push(item)
+                let children = item.children
+                for (let i = children.length; i < children.length; i++) {
+                    stack.push(children[i])
+                }
+            }
+
+            return nodes
+        }
+
+        const root = document.getElementById('root')
+        const result = deepFirstSearch(root)
+        console.log(result)
+
+    </script>
+</body>
+
+</html>
